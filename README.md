@@ -1,6 +1,6 @@
 # Model Error Messages
 
-A simple Rails helper which displays a HTML div with the errors attached to a model.
+A simple Rails helper which displays a HTML div with the validation errors attached to a model.
 
 ## Install
 
