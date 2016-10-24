@@ -1,0 +1,9 @@
+*.gem
+*.swp
+*~
+._*
+.DS_Store
+.ruby-version
+/.bundle
+log/*
+tmp/*
