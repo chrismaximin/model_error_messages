@@ -2,6 +2,7 @@
 
 [![Build Status](https://secure.travis-ci.org/christophemaximin/model_error_messages.png)](https://travis-ci.org/christophemaximin/model_error_messages)
 [![Gem version](https://badge.fury.io/rb/model_error_messages.png)](https://rubygems.org/gems/model_error_messages)
+[![Code Climate](https://codeclimate.com/github/christophemaximin/model_error_messages/badges/gpa.svg)](https://codeclimate.com/github/christophemaximin/model_error_messages)
 
 A simple Rails helper which displays a HTML div with the validation errors attached to a model.
 
