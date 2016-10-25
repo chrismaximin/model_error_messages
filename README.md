@@ -16,6 +16,7 @@ gem 'model_error_messages'
 ## What this gem does / How to use
 
 This gem allows you to use a helper called `model_error_messages`.  
+By default, the wrapper `div` has the [Bootstrap](http://getbootstrap.com)-friendly classes `alert alert-danger`.  
 If you have a typical form, you would want to display `model_error_messages(@model)` next to it, which will render something like:
 
 ```html
