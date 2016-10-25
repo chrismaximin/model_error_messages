@@ -1,6 +1,3 @@
-%w(
-  configuration
-  version
-).each do |file_name|
-  require File.join(File.dirname(__FILE__), 'model_error_messages', file_name)
-end
+require 'model_error_messages/version'
+require 'model_error_messages/configuration'
+require 'model_error_messages/railtie'

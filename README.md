@@ -13,7 +13,7 @@ gem 'model_error_messages'
 ## What this gem does / How to use
 
 This gem allows you to use a helper called `model_error_messages`.  
-If you have a typical form, you would want to display `model_error_messages(@model_instance)` next to it, which will render something like:
+If you have a typical form, you would want to display `model_error_messages(@model)` next to it, which will render something like:
 
 ```html
 <div class="alert alert-danger article-error-messages">
@@ -59,7 +59,7 @@ You can change the default behavior of `model_error_messages` by:
 Create a file `config/initializers/model_error_messages.rb` and replace one of the defaults:
 
 ```rb
-ModelErrorMessages.configuration do |config|
+ModelErrorMessages.configure do |config|
   # Multiple errors will rendered in a several <li> in a <ul>, while one error will be rendered in a <p>
   config.single_error_in_paragraph = true
 
