@@ -61,7 +61,7 @@ Create a file `config/initializers/model_error_messages.rb` and replace one of t
 ```rb
 ModelErrorMessages.configuration do |config|
   # Multiple errors will rendered in a several <li> in a <ul>, while one error will be rendered in a <p>
-  config.render_single_error_in_paragraph = true
+  config.single_error_in_paragraph = true
 
   # The following classes will be added in the main wrapper div.
   config.classes = lambda do |model|
@@ -85,7 +85,7 @@ end
 Examples:
 
 ```erb
-<%= model_error_messages(@article, render_single_error_in_paragraph: false) %>
+<%= model_error_messages(@article, single_error_in_paragraph: false) %>
 ```
 
 ## Contributing

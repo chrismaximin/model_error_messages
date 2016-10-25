@@ -1,0 +1,11 @@
+AllCops:
+  DisabledByDefault: false
+  TargetRubyVersion: 2.3
+
+Style/Documentation:
+  Description: 'Document classes and non-namespace modules.'
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Description: 'Missing frozen string literal comment.'
+  Enabled: false
