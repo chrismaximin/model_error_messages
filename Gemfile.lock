@@ -181,6 +181,7 @@ DEPENDENCIES
   guard-rubocop (~> 1.2)
   model_error_messages!
   rails (~> 5.0)
+  rake (~> 11.3)
   rb-fchange (~> 0)
   rb-fsevent (~> 0.9)
   rb-inotify (~> 0.9)

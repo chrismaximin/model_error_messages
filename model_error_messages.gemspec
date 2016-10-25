@@ -14,6 +14,7 @@ Gem::Specification.new do |s|
 
   s.platform = Gem::Platform::RUBY
 
+  s.add_development_dependency 'rake', '~> 11.3'
   s.add_development_dependency 'rspec', '~> 3.5'
   s.add_development_dependency 'guard-rspec', '~> 4.7'
   s.add_development_dependency 'guard-rubocop', '~> 1.2'
