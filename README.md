@@ -69,14 +69,17 @@ ModelErrorMessages.configure do |config|
       'alert',
       'alert-danger',
       model.class.model_name.param_key + '-error-messages'
-    ]
+    ].join(' ')
   end
 
+  # Note: you can pass a simple string to `config.classes`, example:
+  # config.classes = 'alert alert-danger'
+
   # HTML that will be added before the list of errors.
-  config.prepend_html = lambda { |model| String.new }
+  config.prepend_html = String.new
 
   # HTML that will be added after the list of errors.
-  config.append_html = lambda { |model| String.new }
+  config.append_html = String.new
 end
 ```
 

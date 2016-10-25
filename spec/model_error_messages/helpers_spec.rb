@@ -25,10 +25,10 @@ def mock_model(options = {})
 end
 
 describe 'Helpers' do
-  include ActionView::Helpers::TextHelper
-
   describe '#model_error_messages' do
+    include ModelErrorMessages::Helpers
     attr_accessor :output_buffer
+
     subject { model_error_messages(mock_model) }
 
     it 'returns nothing if model is nil' do
@@ -65,27 +65,13 @@ describe 'Helpers' do
     context 'with a custom configuration' do
       let(:configuration) { ModelErrorMessages.configuration }
       let(:options) { { single_error_in_paragraph: false } }
-      let(:result) { model_error_messages(mock_model(errors: 1), options) }
+      let(:model) { mock_model(errors: 1) }
+      let(:result) { model_error_messages(model, options) }
 
       before do
-        configuration.prepend_html = lambda do |m|
-          if m.errors.full_messages.count == 1
-            content_tag(:h1, 'An error occurred')
-          else
-            content_tag(:h1, 'Several errors occurred')
-          end
-        end
-
-        configuration.append_html = lambda do |_m|
-          content_tag(:p, 'Please try again.')
-        end
-
-        configuration.classes = lambda do |model|
-          [
-            model.class.model_name.param_key + '-foo',
-            'bar'
-          ]
-        end
+        configuration.prepend_html = content_tag(:h1, 'An error occurred')
+        configuration.append_html = content_tag(:p, 'Please try again.')
+        configuration.classes = model.class.model_name.param_key + '-foo bar'
       end
 
       it 'renders correctly' do

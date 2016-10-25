@@ -1,5 +1,7 @@
 module ModelErrorMessages
   module Helpers
+    include ActionView::Helpers::TagHelper
+
     def model_error_messages(model, options = {})
       return '' if model.nil?
       return '' if model.errors.full_messages.empty?
@@ -10,11 +12,22 @@ module ModelErrorMessages
     private
 
     def errors_wrapper(model, config)
-      class_attr = config.classes.call(model).join(' ')
+      class_attr = wrapper_class_attr(model, config)
+
       content_tag(:div, class: class_attr) do
-        [:prepended, :errors_list, :appended].map do |method|
-          send(method, model, config)
-        end.join.html_safe
+        [
+          config.prepend_html,
+          errors_list(model, config),
+          config.append_html
+        ].join.html_safe
+      end
+    end
+
+    def wrapper_class_attr(model, config)
+      if config.classes.is_a?(Proc)
+        config.classes.call(model)
+      else
+        config.classes
       end
     end
 
@@ -32,28 +45,12 @@ module ModelErrorMessages
       end
     end
 
-    def prepended(model, config)
-      config.prepend_html.call(model)
-    end
-
-    def appended(model, config)
-      config.append_html.call(model)
-    end
-
     def local_config(options)
       config = ModelErrorMessages.configuration.clone
       options.each_pair do |k, v|
         config.send(k.to_s + '=', v)
       end
       config
-    end
-  end
-end
-
-module ActionView
-  module Helpers
-    module TextHelper
-      include ::ModelErrorMessages::Helpers
     end
   end
 end
