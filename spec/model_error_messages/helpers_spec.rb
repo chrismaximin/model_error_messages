@@ -69,8 +69,8 @@ describe 'Helpers' do
       let(:result) { model_error_messages(model, options) }
 
       before do
-        configuration.prepend_html = content_tag(:h1, 'An error occurred')
-        configuration.append_html = content_tag(:p, 'Please try again.')
+        configuration.prepend_html = '<h1>An error occurred</h1>'
+        configuration.append_html = '<p>Please try again.</p>'
         configuration.classes = model.class.model_name.param_key + '-foo bar'
       end
 
