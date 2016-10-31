@@ -10,7 +10,7 @@ end
 def mock_model_full_messages(errors_count)
   case errors_count
   when 0 then []
-  when 1 then ['Title is missing']
+  when 1 then ['Title is -> missing']
   when 2 then ['Please select an author', 'Content is missing']
   else
     raise 'Please enter a valid `errors` count.'
@@ -27,7 +27,6 @@ end
 describe 'Helpers' do
   describe '#model_error_messages' do
     include ModelErrorMessages::Helpers
-    attr_accessor :output_buffer
 
     subject { model_error_messages(mock_model) }
 
@@ -46,7 +45,7 @@ describe 'Helpers' do
         result = model_error_messages(mock_model(errors: 1))
         expect(result).to eql(
           '<div class="alert alert-danger model-error-messages">' \
-          '<p>Title is missing</p>' \
+          '<p>Title is -&gt; missing</p>' \
           '</div>'
         )
       end
@@ -59,6 +58,11 @@ describe 'Helpers' do
           '<li>Content is missing</li></ul>' \
           '</div>'
         )
+      end
+
+      it 'returns a safe string' do
+        result = model_error_messages(mock_model(errors: 1))
+        expect(result.html_safe?).to eql(true)
       end
     end
 
@@ -78,7 +82,7 @@ describe 'Helpers' do
         expect(result).to eql(
           '<div class="model-foo bar">' \
           '<h1>An error occurred</h1>' \
-          '<ul><li>Title is missing</li></ul>' \
+          '<ul><li>Title is -&gt; missing</li></ul>' \
           '<p>Please try again.</p>' \
           '</div>'
         )

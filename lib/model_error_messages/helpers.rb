@@ -37,11 +37,11 @@ module ModelErrorMessages
       messages = model.errors.full_messages
 
       if messages.count == 1 && config.single_error_in_paragraph
-        return tag(:p, messages.first)
+        return tag(:p, CGI.escapeHTML(messages.first))
       end
 
       ul_string = messages.map do |message|
-        tag(:li, message)
+        tag(:li, CGI.escapeHTML(message))
       end.join.html_safe
 
       tag(:ul, ul_string)
@@ -61,8 +61,9 @@ module ModelErrorMessages
           attrs << %( #{pair.first}="#{CGI.escapeHTML(pair.last.to_s)}")
         end
         attrs
-      end
-      "<#{name}#{string_attributes}>#{value}</#{name}>"
+      end.html_safe
+
+      "<#{name}#{string_attributes}>#{value}</#{name}>".html_safe
     end
   end
 end
