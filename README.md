@@ -109,4 +109,4 @@ $ bundle exec rspec spec/
 
 ## License
 
-This software is distributed under the MIT License. Copyright (c) 2016, Christophe Maximin
+This software is distributed under the MIT License. Copyright (c) 2016-2019, Christophe Maximin

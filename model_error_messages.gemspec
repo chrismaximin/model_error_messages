@@ -14,15 +14,6 @@ Gem::Specification.new do |s|
 
   s.platform = Gem::Platform::RUBY
 
-  s.add_development_dependency 'rake', '~> 11.3'
-  s.add_development_dependency 'rspec', '~> 3.5'
-  s.add_development_dependency 'guard-rspec', '~> 4.7'
-  s.add_development_dependency 'guard-rubocop', '~> 1.2'
-  s.add_development_dependency 'rb-inotify', '~> 0.9'
-  s.add_development_dependency 'rb-fsevent', '~> 0.9'
-  s.add_development_dependency 'rb-fchange', '~> 0'
-  s.add_development_dependency 'rails', '~> 5.0'
-
   s.files = `git ls-files`.split("\n")
   s.test_files = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables = `git ls-files -- bin/*`.split('\n').map do |f|
